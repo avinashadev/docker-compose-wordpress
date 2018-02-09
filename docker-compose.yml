@@ -24,7 +24,7 @@ services:
       - WORDPRESS_DB_NAME=wpdb
       - WORDPRESS_TABLE_PREFIX=wp_
       - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_PASSWORD=wp_password
+      - WORDPRESS_DB_PASSWORD=db_password
     networks:
       - front
       - back
