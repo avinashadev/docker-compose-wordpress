@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: evild/alpine-nginx:1.11.2-libressl
+    image: evild/alpine-nginx:1.11.5-libressl
     container_name: wordpress_nginx
     restart: always
     volumes:
@@ -14,7 +14,7 @@ services:
     networks:
       - front
   php:
-    image: evild/alpine-wordpress:4.5.3
+    image: evild/alpine-wordpress:latest
     container_name: wordpress_php
     restart: always
     volumes:
@@ -24,18 +24,18 @@ services:
       - WORDPRESS_DB_NAME=wpdb
       - WORDPRESS_TABLE_PREFIX=wp_
       - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_PASSWORD=password
+      - WORDPRESS_DB_PASSWORD=wp_password
     networks:
       - front
       - back
   db:
-    image: mariadb:10
+    image: mariadb:latest
     container_name: wordpress_mariadb
     restart: always
     volumes:
       - wordpress-db-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=db_password
     networks:
       - back
 volumes:
